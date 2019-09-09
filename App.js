@@ -1,25 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import ClockSign from './pages/ClockSign';
 
+class App extends Component {
+  
+  state= {
+    token: '',
+    request: [],
+    page: "registrohorario",
+    keyword:'',
+    userid:0,
+  }
 
-function App () {
-  return (
+  render () {  
+    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    });
+    
+   const {token} = this.state
+    
+    return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+          <Text>Registro Horario</Text>
+          <ClockSign props={this.state}/>
       </View>
     );  
+  }
 }
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 
 export default App;
