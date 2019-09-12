@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import ClockSign from './pages/ClockSign';
+import Clock from 'react-clock';
+import Clockjs from './components/Clockjs';
+import { apisAreAvailable } from 'expo';
 
 class App extends Component {
   
@@ -12,24 +15,37 @@ class App extends Component {
     userid:0,
   }
 
+  
+
   render () {  
     
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: '#fff',
+        
         alignItems: 'center',
         justifyContent: 'center',
       },
+      text: {
+        marginBottom: 50,
+        fontFamily: 'arial',
+        fontWeight: 'bold',
+        fontSize: 20,
+      }
     });
     
-   const {token} = this.state
     
     return (
-      <View style={styles.container}>
-          <Text>Registro Horario</Text>
-          <ClockSign props={this.state}/>
-      </View>
+      <ImageBackground 
+        source={require('./assets/images/bamboo.jpg')}
+        style={{width: '100%', height: '100%'}}
+        >
+        <View style={styles.container}>
+          <Text style={styles.text}>Registro Horario</Text>
+            <Clockjs/>
+            <ClockSign props={this.state}/>
+        </View>
+      </ImageBackground>
     );  
   }
 }
